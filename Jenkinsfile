@@ -10,14 +10,14 @@ pipeline {
             }
         }
         stage('Example Build') {
-            agent { docker 'maven:3.9.0-eclipse-temurin-11' } 
+            agent { docker 'myjenkins-blueocean:2.387.1-1' } 
             steps {
                 echo 'Hello, Maven'
                 sh 'mvn --version'
             }
         }
         stage('Example Test') {
-            agent { docker 'openjdk:8-jre' } 
+            agent { docker 'myjenkins-blueocean:2.387.1-1' } 
             steps {
                 echo 'Hello, JDK'
                 sh 'java -version'
