@@ -6,32 +6,21 @@ pipeline {
     stages {
         stage('Example') {
             steps {
-                echo 'Hello World 1'
+                echo 'Hello World'
             }
         }
-        stage('Example2') {
+        stage('Example Build') {
+            agent { docker 'maven:3.9.0-eclipse-temurin-11' } 
             steps {
-                echo 'Hello World 2'
+                echo 'Hello, Maven'
+                sh 'mvn --version'
             }
         }
-        stage('Example3') {
+        stage('Example Test') {
+            agent { docker 'openjdk:8-jre' } 
             steps {
-                echo 'Hello World 3'
-            }
-        }
-        stage('Example4') {
-            steps {
-                echo 'Hello World 4'
-            }
-        }
-        stage('Example5') {
-            steps {
-                echo 'Hello World 5'
-            }
-        }
-        stage('Example6') {
-            steps {
-                echo 'Hello World 6'
+                echo 'Hello, JDK'
+                sh 'java -version'
             }
         }
     }
