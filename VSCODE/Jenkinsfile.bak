@@ -1,10 +1,5 @@
 pipeline {
-    agent { 
-	   dockerfile  {
-			filename 'Dockerfile.txt'
-			dir 'IMG' 
-		} 
-	}
+    agent { dockerfile true }
     triggers {
         pollSCM('H/2 * * * *') 
     }
