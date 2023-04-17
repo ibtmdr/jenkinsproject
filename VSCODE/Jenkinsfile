@@ -4,6 +4,12 @@ pipeline {
         pollSCM('H/2 * * * *') 
     }
     stages {
+	    stage('Test') {
+            steps {
+                sh 'node --version'
+                sh 'svn --version'
+            }
+        }
         stage('Example') {
             input {
                 message "Should we continue?"
